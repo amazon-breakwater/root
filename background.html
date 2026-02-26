@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Background — Amazon Seasonal Discharge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* — Outreach-specific additions — */
+    .pull-quote {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--clr-accent);
+      border-left: 3px solid var(--clr-accent);
+      padding: var(--space-md) var(--space-lg);
+      margin: var(--space-lg) 0;
+      background: var(--clr-accent-bg);
+      border-radius: 0 4px 4px 0;
+      line-height: 1.6;
+    }
+    .aside-box {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 4px;
+      padding: var(--space-md);
+      margin: var(--space-lg) 0;
+      font-size: 0.92rem;
+    }
+    .aside-box h4 {
+      margin-top: 0;
+      color: var(--clr-accent);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.95rem;
+    }
+    .analogy-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .analogy-side {
+      padding: var(--space-md);
+      border-radius: 4px;
+    }
+    .analogy-side.everyday {
+      background: var(--clr-accent-bg);
+      border: 1px solid var(--clr-accent);
+    }
+    .analogy-side.river {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+    }
+    .analogy-side h4 {
+      margin-top: 0;
+      font-size: 0.85rem;
+    }
+    .analogy-side p { font-size: 0.9rem; margin-bottom: var(--space-sm); }
+    .analogy-side p:last-child { margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .analogy-pair { grid-template-columns: 1fr; }
+    }
+    .numbers-highlight {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--clr-accent);
+      display: block;
+      margin: var(--space-xs) 0 var(--space-sm);
+    }
+    .section-intro {
+      font-size: 1.02rem;
+      color: var(--clr-muted);
+      margin-bottom: var(--space-lg);
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="breadcrumb">
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    <span class="sep">·</span>
+    <a href="index.html">Amazon Seasonal Discharge</a>
+    <span class="sep">·</span>
+    Background
+  </nav>
+
+  <h1>Does the Amazon Flood Twice a Year?</h1>
+  <p class="subtitle">
+    A question that sounds simple — and isn't
+  </p>
+
+  <nav class="tab-nav">
+    <a href="index.html">Overview</a>
+    <a href="background.html" class="active">Background</a>
+    <a href="dossier.html">Dossier</a>
+    <a href="model.html">Model</a>
+    <a href="parameters.html">Parameters</a>
+    <a href="falsification.html">Falsification</a>
+  </nav>
+
+  <p class="section-intro">
+    This page introduces the scientific question behind the dossier in plain language.
+    No equations, no jargon. If you want the technical details, the
+    <a href="dossier.html">Dossier</a> and <a href="model.html">Model</a> pages
+    have everything.
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>The River</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    The Amazon carries more water than any other river on Earth. At the city of Óbidos,
+    roughly 800 kilometres from the Atlantic, the river discharges on average about
+    176 000 cubic metres of water every second. That is roughly one fifth of all the
+    fresh water that all the world's rivers deliver to the oceans — passing through a
+    single cross-section.
+  </p>
+
+  <p>
+    The basin that feeds it is vast: an area larger than western Europe, spanning from
+    the Andes to the Atlantic lowlands, crossing the equator, and collecting rain from
+    both hemispheres. The mainstem alone stretches nearly 4 000 kilometres upstream
+    of Óbidos.
+  </p>
+
+  <div class="pull-quote">
+    When people say "the Amazon floods," they are talking about a seasonal rise and fall
+    that takes months — not the kind of sudden event you see on the evening news.
+    The water rises slowly, peaks, and recedes. The question is: does it do this
+    once a year, or twice?
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Why Would Anyone Think "Twice"?</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    The Amazon basin straddles the equator. Its northern tributaries (like the Rio Negro)
+    receive most of their rain during the Northern Hemisphere wet season. Its southern
+    tributaries (like the Madeira) are fed by the Southern Hemisphere wet season.
+    These two rainy seasons are offset by several months.
+  </p>
+
+  <p>
+    So it is tempting to think: two rainy seasons, two flood pulses. Rain from the south
+    arrives first, rain from the north arrives later — and if the timing works out, you
+    might see two distinct peaks in the water level downstream, where everything comes
+    together.
+  </p>
+
+  <p>
+    This idea appears in textbooks, travel guides, and even some scientific summaries.
+    It is not absurd. But is it what the data actually show?
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>What the Data Show</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    At Óbidos — the most important measuring station on the Amazon mainstem, with records
+    going back to 1928 — the long-term average hydrograph looks like a single, broad hump.
+    Water rises from about November, peaks around May or June, and falls through
+    the rest of the year. One rise, one peak, one recession.
+  </p>
+
+  <p>
+    There is no clean second peak in the average.
+  </p>
+
+  <p>
+    But — and this is where it gets interesting — the shape of that single hump is not
+    perfectly symmetric. In some years, there is a noticeable shoulder: a brief flattening,
+    or even a small dip, before the main peak. In other years, the hydrograph is
+    smooth and unimodal.
+  </p>
+
+  <div class="aside-box">
+    <h4>Shoulders, not summits</h4>
+    <p>
+      The difference matters. A "shoulder" is a wobble in the curve — the water level
+      flattens or briefly dips before continuing to rise. A true "second flood" would
+      mean the water rises, peaks, falls substantially, and then rises again to a
+      second distinct peak. The first is common; the second is rare at major
+      downstream gauges.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>The Music Analogy</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    To understand why this happens, it helps to think about sound.
+  </p>
+
+  <p>
+    A pure musical note — say, a tuning fork at 440 Hz — produces a perfectly smooth
+    wave. One peak, one trough, repeating. No matter how you amplify it, filter it,
+    or echo it through a room, you will never get two peaks per cycle from a single
+    pure tone.
+  </p>
+
+  <p>
+    But real instruments do not produce pure tones. A piano playing middle A produces
+    the fundamental at 440 Hz <em>plus</em> overtones: 880 Hz, 1320 Hz, and so on.
+    It is the overtones — frequencies that are whole-number multiples of the
+    fundamental — that give the piano its distinctive timbre. And those overtones
+    can create bumps and shoulders in the waveform that a pure tone never could.
+  </p>
+
+  <div class="analogy-pair">
+    <div class="analogy-side everyday">
+      <h4>Sound</h4>
+      <p>Fundamental note (440 Hz) = smooth wave, one peak per cycle.</p>
+      <p>Add the first overtone (880 Hz) = the waveform gets a shoulder or bump, depending on how loud the overtone is and when it peaks relative to the fundamental.</p>
+      <p>If the overtone is loud enough and timed right, you get two peaks per cycle.</p>
+    </div>
+    <div class="analogy-side river">
+      <h4>Amazon</h4>
+      <p>Annual rainfall cycle = the fundamental. One wet season, one dry season, one flood peak per year.</p>
+      <p>Add the semiannual component (rain from north and south offset by months) = the hydrograph gets a shoulder or bump.</p>
+      <p>If the semiannual signal is strong enough and timed right, you could get two flood peaks per year.</p>
+    </div>
+  </div>
+
+  <p>
+    At Óbidos, the "overtone" — the semiannual component — exists, but it is small.
+    Its amplitude is only about 13% of the annual fundamental. That is like an overtone
+    you can barely hear: it colours the sound slightly, but it does not create a
+    distinct second beat.
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Why It Varies from Year to Year</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    Climate is not a metronome. The strength and timing of the rainy seasons shift
+    from one year to the next, driven by large-scale patterns like El Niño, La Niña,
+    and changes in Atlantic sea surface temperatures.
+  </p>
+
+  <p>
+    In some years, these climate modes push more rain into the northern tributaries,
+    or shift the timing so that the northern and southern pulses are more distinct.
+    The shoulder becomes more pronounced. Occasionally, it might look like a genuine
+    second peak — but it is not a stable, repeating pattern. The next year, it may
+    vanish entirely.
+  </p>
+
+  <p>
+    Research published in <em>Hydrology and Earth System Sciences</em> has shown that
+    flood magnitude and duration in the Amazon basin are significantly affected by the
+    type of El Niño event (whether it is centred in the eastern or central Pacific),
+    not just by whether El Niño occurs at all. This means the "shape" of each year's
+    hydrograph is partly written by the ocean, thousands of kilometres away.
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>The Slow Filter</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    There is another piece to the puzzle. Rain does not arrive at Óbidos instantly.
+    It falls in the Andes, in the central lowlands, in the Guiana Highlands — and then
+    it has to travel. Some of it flows quickly through steep mountain streams. Some of
+    it seeps through vast floodplains where the river spreads kilometres wide and
+    barely moves.
+  </p>
+
+  <p>
+    This journey acts as a filter. Sharp rainfall pulses get smoothed out. Distinct
+    signals from different tributaries get blended. The floodplain itself acts as a
+    giant sponge: when the water is rising, it spills out and slows down; when it is
+    falling, the stored water drains back and extends the recession.
+  </p>
+
+  <p>
+    Scientists model this with large-scale hydrodynamic simulations that track water
+    across the entire basin — including floodplain storage, backwater effects at
+    tributary confluences, and the complicated geometry of the river network. These
+    models show that you cannot reproduce what we observe at Óbidos without accounting
+    for floodplain processes. Simple "pipe-flow" models get the timing and shape wrong.
+  </p>
+
+  <div class="aside-box">
+    <h4>A word about "Flut"</h4>
+    <p>
+      In some languages, the same word covers both river floods and tidal phenomena.
+      The Amazon does have a famous tidal bore — the <em>pororoca</em> — where
+      the incoming ocean tide pushes a wave upstream. This is a completely different
+      process from the seasonal flood. It happens on timescales of hours, not months,
+      and it affects only the lower reaches near the coast. Mixing up these two
+      meanings of "flood" is a common source of confusion.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>So — Once or Twice?</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    The honest answer: <strong>mostly once, with caveats.</strong>
+  </p>
+
+  <p>
+    At the major downstream gauges that integrate the whole basin, the climatological
+    pattern is a single annual flood pulse. A small semiannual signal exists — it is
+    real, it is measurable — but in most years it is too weak to produce a genuine
+    second peak. It produces shoulders, not summits.
+  </p>
+
+  <p>
+    Whether a given year looks unimodal or bimodal depends on how strong the semiannual
+    component is relative to the annual one, and on the timing between them. Climate
+    variability (especially ENSO) modulates both. And the floodplain system smooths
+    and reshapes everything on the way downstream.
+  </p>
+
+  <p>
+    The idea of "two floods per year" is not wrong in the sense that two distinct
+    rainfall inputs exist. But it overstates what arrives at the other end of the
+    system. The basin is a filter, and the filter matters.
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>What We Do Not Know Yet</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    Science is honest about its gaps. Here are the open questions:
+  </p>
+
+  <p>
+    <strong>How often does a true second peak occur?</strong> No one has systematically
+    gone through the full Óbidos record, year by year, and counted. That is the single
+    most important next step — and it is straightforward, once the data are properly
+    assembled. (In the technical dossier, this is called
+    <a href="falsification.html#F-1">F-1: the regime occupancy test</a>.)
+  </p>
+
+  <p>
+    <strong>Does El Niño push the system across the threshold?</strong> It is plausible
+    that certain climate configurations make a second peak more likely. Testing this
+    requires combining the year-by-year shape analysis with climate indices.
+    (<a href="falsification.html#F-2">F-2</a>.)
+  </p>
+
+  <p>
+    <strong>Is the filter changing?</strong> Deforestation, land-use change, and
+    alterations to floodplain geometry could change how quickly water moves through
+    the basin. If the filter is shifting over decades, the likelihood of a shoulder
+    becoming a peak might be changing too.
+    (<a href="falsification.html#F-3">F-3</a>.)
+  </p>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Why It Matters</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    This is not just an academic exercise. Millions of people live along the Amazon
+    and its tributaries. Their agriculture, transport, fisheries, and daily lives are
+    shaped by the flood pulse. Understanding whether the seasonal pattern is shifting —
+    whether shoulders are becoming peaks, or whether the timing is drifting — matters
+    for planning, infrastructure, and adaptation.
+  </p>
+
+  <p>
+    It also matters for how we communicate science. Saying "the Amazon floods twice
+    a year" is a clean, memorable statement. But if it is not reliably true, it can
+    lead to wrong expectations — in policy, in education, and in how communities
+    prepare. Getting the nuance right is worth the effort.
+  </p>
+
+  <div class="pull-quote">
+    The goal of this dossier is not to declare the question settled.
+    It is to frame it precisely enough that it <em>can</em> be settled —
+    with data, with clear criteria, and with honesty about what we
+    do not yet know.
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Reading Further</h2>
+  <!-- ══════════════════════════════════════════ -->
+
+  <p>
+    If you would like to see the technical analysis behind this summary, the other
+    pages of this dossier present the full picture:
+  </p>
+
+  <div class="card-grid">
+    <a class="card" href="dossier.html">
+      <h3>Dossier</h3>
+      <p>The Claim Analysis Ledger — five claims assessed with explicit pass/fail criteria.</p>
+    </a>
+    <a class="card" href="model.html">
+      <h3>Model</h3>
+      <p>The mathematical framework — what it takes to produce two peaks, and why Óbidos doesn't.</p>
+    </a>
+    <a class="card" href="parameters.html">
+      <h3>Parameters</h3>
+      <p>The numbers — what has been measured, how reliable it is, and what is still missing.</p>
+    </a>
+    <a class="card" href="falsification.html">
+      <h3>Falsification</h3>
+      <p>The next steps — three specific tests that could confirm or refute the analysis.</p>
+    </a>
+  </div>
+
+  <p style="margin-top:var(--space-lg); font-size:0.9rem; color:var(--clr-muted);">
+    This dossier is part of the
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    — an open framework for organising scientific knowledge under conditions of
+    uncertainty. The Breakwater Layer measures claims. It does not rank them, route them,
+    or endorse them. Authority flows from use, not affiliation.
+  </p>
+
+  <!-- ── Footer ── -->
+  <footer class="page-footer">
+    Dossier v0.3 · Council-3 ADM-EC · Guardian stance with Architect, Scout inputs.<br>
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a> ·
+    Breakwater Layer
+  </footer>
+
+</div>
+</body>
+</html>
