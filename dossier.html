@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dossier — Amazon Seasonal Discharge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['code','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="breadcrumb">
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    <span class="sep">·</span>
+    <a href="index.html">Amazon Seasonal Discharge</a>
+    <span class="sep">·</span>
+    Dossier
+  </nav>
+
+  <h1>Claim Analysis Ledger</h1>
+  <p class="subtitle">Five load-bearing claims · Discriminant-oriented assessment</p>
+
+  <nav class="tab-nav">
+    <a href="index.html">Overview</a>
+    <a href="dossier.html" class="active">Dossier</a>
+    <a href="model.html">Model</a>
+    <a href="parameters.html">Parameters</a>
+    <a href="falsification.html">Falsification</a>
+  </nav>
+
+  <!-- ── 0. One-sentence claim ── -->
+  <h2>0. One-Sentence Claim</h2>
+
+  <p>
+    The apparent "two annual flood waves" in parts of the Amazon system are not a stable
+    semiannual basin-scale regime at major downstream gauges; rather, they are
+    shoulders / multi-peak structures arising from (i)&nbsp;non-sinusoidal seasonal forcing
+    (higher harmonics) and (ii)&nbsp;distributed routing + storage with time-varying kernels,
+    with strong interannual modulation by ENSO/Atlantic variability.
+  </p>
+
+  <!-- ── 1. Scope ── -->
+  <h2>1. Scope and Operational Definitions</h2>
+
+  <h3>1.1 System under test (SoT)</h3>
+  <p>
+    Primary gauges for basin-integrated behaviour: <strong>Óbidos</strong> (Amazon mainstem)
+    and <strong>Manaus</strong> (Rio Negro stage; confluence influence). Óbidos metadata and
+    summary statistics from UNH/GRDC composite station page [1].
+  </p>
+
+  <h3>1.2 What counts as "two floods per year"</h3>
+  <p>
+    A year <em>y</em> is classified as "two-maxima" if the seasonal component of
+    \(Q_y(t)\) has two distinct local maxima within one annual period after removing
+    weather-band variability (e.g., monthly means or low-passed daily series).
+  </p>
+
+  <div class="discrim-block">
+    <span class="discrim-id">DC-A · Root-count discriminant</span>
+    <p>
+      In \(t \in [0,T)\), &ensp;\(\mathrm{d}Q/\mathrm{d}t = 0\) has \(\geq 4\) roots
+      and \(\geq 2\) of them satisfy \(\mathrm{d}^2Q/\mathrm{d}t^2 &lt; 0\) (two maxima).
+    </p>
+  </div>
+
+  <!-- ── 2. Claims ── -->
+  <h2>2. Load-Bearing Claims</h2>
+
+  <!-- CL-1 -->
+  <div class="claim-entry status-pass" id="CL-1">
+    <span class="claim-id">CL-1</span>
+    <p class="claim-title">Mathematical limitation (EC-gate)</p>
+    <span class="claim-status pass">Pass (formal)</span>
+
+    <p>
+      <strong>Claim:</strong> A strictly single-frequency harmonic forcing through an LTI kernel
+      cannot generate two maxima per period.
+    </p>
+
+    <div class="discrim-block">
+      <span class="discrim-id">Discriminant</span>
+      <p>
+        If \(Q(t) = B\cos(\omega t - \psi)\), then \(\mathrm{d}Q/\mathrm{d}t = 0\) yields
+        exactly two roots per period → one maximum, one minimum.
+      </p>
+    </div>
+
+    <p>
+      <strong>Consequence:</strong> Any "two floods per year" explanation must invoke
+      (a)&nbsp;higher harmonics in forcing, or (b)&nbsp;nonlinearity / time variance in routing, or both.
+    </p>
+  </div>
+
+  <!-- CL-2 -->
+  <div class="claim-entry status-pass" id="CL-2">
+    <span class="claim-id">CL-2</span>
+    <p class="claim-title">Corrected minimal seasonal model (1st + 2nd harmonic sufficiency)</p>
+    <span class="claim-status pass">Pass (formal)</span>
+
+    <p>
+      <strong>Claim:</strong> A corrected reduced model with annual + semiannual components is the
+      minimal linear model that can exhibit two maxima per year.
+    </p>
+
+    <div class="math-display">
+      \[
+        Q(t) = c_0 + B_1\cos(\omega t - \psi_1) + B_2\cos(2\omega t - \psi_2)
+      \]
+    </div>
+
+    <div class="discrim-block">
+      <span class="discrim-id">DC-B · Multi-root region discriminant</span>
+      <p>
+        Define \(r = B_2/B_1\), &ensp;\(\delta = \psi_2 - 2\psi_1\). Two maxima can occur only if
+        \((r, \delta)\) lies in a "multi-root" region of
+        \(\sin x + 2r\sin(2x + \delta) = 0\).
+      </p>
+    </div>
+
+    <p>
+      <strong>Notes:</strong> This is a structural discriminant; thresholds are
+      \(\delta\)-dependent and should be assessed numerically for root counts when
+      annual-by-annual fits exist. See <a href="model.html">Model</a> for the full derivation.
+    </p>
+  </div>
+
+  <!-- CL-3 -->
+  <div class="claim-entry status-prov" id="CL-3">
+    <span class="claim-id">CL-3</span>
+    <p class="claim-title">Óbidos is dominantly annual; semiannual term is small</p>
+    <span class="claim-status prov">Provisional-Pass</span>
+
+    <p>
+      <strong>Claim:</strong> At Óbidos, the climatological seasonal discharge is well described
+      by annual + semiannual harmonics with small <em>r</em>, consistent with a unimodal
+      annual hydrograph.
+    </p>
+
+    <p>
+      <strong>Evidence anchor:</strong> UNH/GRDC station summary [1] provides long-period
+      discharge statistics and mainstem length (used for routing scale).
+    </p>
+
+    <p>
+      <strong>Verifier-derived parameters</strong> (from monthly climatology, 1928–1996):
+    </p>
+    <p>
+      \(B_1 \approx 6.4 \times 10^4 \;\mathrm{m^3/s}\), &ensp;
+      \(B_2 \approx 8.3 \times 10^3 \;\mathrm{m^3/s}\), &ensp;
+      \(r \approx 0.13\), &ensp;
+      \(\delta \approx 0.9 \;\mathrm{rad}\)
+    </p>
+
+    <p>
+      With \(r \ll 1\), the derivative equation is generically in the unimodal regime for
+      most \(\delta\).
+    </p>
+
+    <p>
+      <strong>Upgrade gate:</strong> Requires reproducible fit archive with station ID,
+      time window, harmonic decomposition code, and output \((r, \delta)\) table — tagged
+      as dependency of <a href="falsification.html#F-1">F-1</a>. Staleness policy: re-evaluate
+      after 6 months or upon availability of new gauge data, whichever comes first.
+    </p>
+  </div>
+
+  <!-- CL-4 -->
+  <div class="claim-entry status-pass" id="CL-4">
+    <span class="claim-id">CL-4</span>
+    <p class="claim-title">ENSO/Atlantic variability modulates flood characteristics strongly</p>
+    <span class="claim-status pass">Pass (as stated)</span>
+
+    <p>
+      <strong>Claim:</strong> Modes of climate variability (ENSO type and tropical Atlantic
+      variability) produce significant changes in flood magnitude and duration across the
+      Amazon basin, with timing effects more heterogeneous.
+    </p>
+
+    <p>
+      <strong>Evidence anchor:</strong> Hydrology and Earth System Sciences study [2]
+      explicitly reports significant changes in flood magnitude and duration, with dependence
+      on ENSO "type."
+    </p>
+  </div>
+
+  <!-- CL-5 -->
+  <div class="claim-entry status-pass" id="CL-5">
+    <span class="claim-id">CL-5</span>
+    <p class="claim-title">Distributed routing + backwater/floodplain storage matters</p>
+    <span class="claim-status pass">Pass (as stated)</span>
+
+    <p>
+      <strong>Claim:</strong> Hydrologic/hydrodynamic routing with floodplains and backwater
+      effects is required to reproduce observed lags/attenuation; simple routing misses
+      key physics.
+    </p>
+
+    <p>
+      <strong>Evidence anchor:</strong> Large-scale hydrologic/hydrodynamic modelling of the
+      Amazon using MGB-IPH [3] with validation against observations and remotely sensed inundation.
+    </p>
+  </div>
+
+  <!-- ── Decision Statements ── -->
+  <h2>6. Decision Statements</h2>
+
+  <div class="decision" id="DS-1">
+    <span class="decision-id">DS-1 (Supported)</span>
+    <p>
+      At Óbidos, the climatological discharge is strongly annual; a small semiannual component
+      exists but is not indicative of a stable "two floods per year" regime. [1]
+    </p>
+  </div>
+
+  <div class="decision" id="DS-2">
+    <span class="decision-id">DS-2 (Supported)</span>
+    <p>
+      Explaining true two-maxima behaviour requires at least annual + semiannual structure
+      (or nonlinearity / time variance); single-harmonic LTI cannot do it.
+    </p>
+  </div>
+
+  <div class="decision" id="DS-3">
+    <span class="decision-id">DS-3 (Supported)</span>
+    <p>
+      ENSO/Atlantic variability significantly modulates flood characteristics; therefore
+      year-to-year variability in any "secondary peak / shoulder" is expected. [2]
+    </p>
+  </div>
+
+  <div class="decision" id="DS-4">
+    <span class="decision-id">DS-4 (Supported)</span>
+    <p>
+      Distributed routing with floodplains/backwater is load-bearing for timing/attenuation;
+      kernel drift is plausible and should be parameterised if long-term change is claimed. [3]
+    </p>
+  </div>
+
+  <!-- ── Minimal citation set ── -->
+  <h2>8. Minimal Citation Set</h2>
+
+  <ol class="cite-list">
+    <li id="ref-1">
+      UNH/GRDC — Óbidos station summary (composite). Upstream mainstem length, long-period
+      discharge statistics (1928–1996).
+      <!-- TODO: replace with stable URI or DOI once confirmed -->
+    </li>
+    <li id="ref-2">
+      Espinoza, J. C., Ronchail, J., Marengo, J. A., &amp; Segura, H. —
+      "Contrasting North–South changes in Amazon wet-day and dry-day frequency and related
+      changes in large-scale atmospheric circulation" (or ENSO/flood-type study).
+      <em>Hydrology and Earth System Sciences.</em>
+      <!-- TODO: insert DOI -->
+    </li>
+    <li id="ref-3">
+      Paiva, R. C. D., Collischonn, W., &amp; Tucci, C. E. M. —
+      "Large-scale hydrologic and hydrodynamic modelling of the Amazon River basin" (MGB-IPH).
+      <em>Water Resources Research.</em>
+      <!-- TODO: insert DOI -->
+    </li>
+    <li id="ref-4">
+      Oltman, R. E. — <em>Reconnaissance investigations of the discharge and water quality
+      of the Amazon River.</em> USGS Circular 552. (Historical hydrometric anchor; dated.)
+    </li>
+  </ol>
+
+  <p style="font-size:0.85rem; color:var(--clr-warn); margin-top:var(--space-md);">
+    ⚠ Citation anchors marked <code>TODO</code> require resolution to stable URIs or DOIs
+    before public commit. See
+    <a href="falsification.html">Falsification</a> for the upgrade path.
+  </p>
+
+  <!-- ── Footer ── -->
+  <footer class="page-footer">
+    Dossier v0.3 · Council-3 ADM-EC · Guardian stance with Architect, Scout inputs.<br>
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a> ·
+    Breakwater Layer · <code>hold/</code> (four underconstrained variables)
+  </footer>
+
+</div>
+</body>
+</html>

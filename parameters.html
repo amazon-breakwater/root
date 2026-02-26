@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parameters — Amazon Seasonal Discharge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['code','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="breadcrumb">
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    <span class="sep">·</span>
+    <a href="index.html">Amazon Seasonal Discharge</a>
+    <span class="sep">·</span>
+    Parameters
+  </nav>
+
+  <h1>Parameter Ledger</h1>
+  <p class="subtitle">
+    Best-supported values with reliability grades · Underconstrained variables
+  </p>
+
+  <nav class="tab-nav">
+    <a href="index.html">Overview</a>
+    <a href="dossier.html">Dossier</a>
+    <a href="model.html">Model</a>
+    <a href="parameters.html" class="active">Parameters</a>
+    <a href="falsification.html">Falsification</a>
+  </nav>
+
+  <!-- ── 3.1 Geometry ── -->
+  <h2>3.1 Geometry and Baseline Statistics</h2>
+
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Symbol</th>
+        <th>Value</th>
+        <th>Source</th>
+        <th>Reliability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Upstream mainstem length at Óbidos</td>
+        <td>\(L_B\)</td>
+        <td>≈ 3 869 km</td>
+        <td>UNH/GRDC [1]</td>
+        <td class="reliability reliability-A">A</td>
+      </tr>
+      <tr>
+        <td>Mean discharge at Óbidos</td>
+        <td>\(\bar{Q}\)</td>
+        <td>≈ 1.76 × 10⁵ m³/s</td>
+        <td>UNH/GRDC [1]</td>
+        <td class="reliability reliability-A">A</td>
+      </tr>
+      <tr>
+        <td>Annual harmonic amplitude</td>
+        <td>\(B_1\)</td>
+        <td>≈ 6.4 × 10⁴ m³/s</td>
+        <td>Verifier fit (1928–1996)</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+      <tr>
+        <td>Semiannual harmonic amplitude</td>
+        <td>\(B_2\)</td>
+        <td>≈ 8.3 × 10³ m³/s</td>
+        <td>Verifier fit (1928–1996)</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+      <tr>
+        <td>Amplitude ratio</td>
+        <td>\(r = B_2/B_1\)</td>
+        <td>≈ 0.13</td>
+        <td>Derived</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+      <tr>
+        <td>Effective phase difference</td>
+        <td>\(\delta\)</td>
+        <td>≈ 0.9 rad</td>
+        <td>Verifier fit</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Reliability key:</strong>
+    <span style="color:var(--clr-status-pass); font-weight:700;">A</span> = direct dataset summary or peer-reviewed measurement;
+    <span style="color:var(--clr-status-prov); font-weight:700;">A/B</span> = peer-reviewed analysis or reproducible derived quantity;
+    <span style="color:var(--clr-status-under); font-weight:700;">B</span> = foundational but dated, or limited modern specificity.
+  </p>
+
+  <!-- ── 3.2 Climate-mode modulation ── -->
+  <h2>3.2 Climate-Mode Modulation</h2>
+
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Value / Statement</th>
+        <th>Source</th>
+        <th>Reliability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Flood magnitude + duration modulation</td>
+        <td>Significant; ENSO "type" matters; regional dependence</td>
+        <td>HESS [2]</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+      <tr>
+        <td>Flood timing modulation</td>
+        <td>More heterogeneous; not uniformly significant</td>
+        <td>HESS [2]</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── 3.3 Routing / storage physics ── -->
+  <h2>3.3 Routing and Storage Physics</h2>
+
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Value / Statement</th>
+        <th>Source</th>
+        <th>Reliability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Floodplain storage + backwater</td>
+        <td>Required for timing/attenuation; validated against multi-data-stream obs.</td>
+        <td>MGB-IPH / WRR [3]</td>
+        <td class="reliability reliability-AB">A/B</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── 3.4 Historical anchor ── -->
+  <h2>3.4 Threshold Evidence (Historical)</h2>
+
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Value / Statement</th>
+        <th>Source</th>
+        <th>Reliability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Direct discharge reconnaissance</td>
+        <td>Context and baseline; notes need for many more measurements</td>
+        <td>USGS Circ. 552 [4]</td>
+        <td class="reliability reliability-B">B</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── 4. Underconstrained variables ── -->
+  <h2 id="underconstrained">4. Underconstrained Variables</h2>
+
+  <p>
+    These items prevent upgrading "PROVISIONAL" entries to "PASS":
+  </p>
+
+  <ul class="undercon-list">
+    <li>
+      <strong>Annual-by-annual fitted \((r_y, \delta_y)\)</strong> at Óbidos and Manaus from
+      long daily/monthly series. Needed to compute regime occupancy
+      \(P(\text{two-maxima})\). <em>Dependency: </em><a href="falsification.html#F-1">F-1</a>,
+      <a href="dossier.html#CL-3">CL-3 upgrade gate</a>.
+    </li>
+    <li>
+      <strong>Explicit rainfall harmonic fits</strong> for defined North-lump / South-lump masks
+      from a chosen gridded rainfall product (GPCC/TRMM/GPM), yielding
+      \(A_{ik}, \phi_{ik}\) and their interannual drift.
+    </li>
+    <li>
+      <strong>Quantified kernel drift</strong> \(G_i(\tau, t)\) proxies — land-use change,
+      floodplain roughness, channel morphology — and/or parametric \(\tau(Q)\) relationships.
+      <em>Dependency: </em><a href="falsification.html#F-3">F-3</a>.
+    </li>
+    <li>
+      <strong>Stage-to-discharge rating curves</strong> to translate level thresholds into
+      \(Q_\mathrm{fp}\) if hysteresis modelling is pursued.
+    </li>
+  </ul>
+
+  <!-- ── Footer ── -->
+  <footer class="page-footer">
+    Dossier v0.3 · Council-3 ADM-EC · Guardian stance with Architect, Scout inputs.<br>
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a> ·
+    Breakwater Layer · <code>hold/</code> (four underconstrained variables)
+  </footer>
+
+</div>
+</body>
+</html>

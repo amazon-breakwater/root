@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falsification — Amazon Seasonal Discharge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['code','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="breadcrumb">
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    <span class="sep">·</span>
+    <a href="index.html">Amazon Seasonal Discharge</a>
+    <span class="sep">·</span>
+    Falsification
+  </nav>
+
+  <h1>Falsification Programme</h1>
+  <p class="subtitle">
+    Three ledger-ready steps · Dependencies mapped to underconstrained variables
+  </p>
+
+  <nav class="tab-nav">
+    <a href="index.html">Overview</a>
+    <a href="dossier.html">Dossier</a>
+    <a href="model.html">Model</a>
+    <a href="parameters.html">Parameters</a>
+    <a href="falsification.html" class="active">Falsification</a>
+  </nav>
+
+  <!-- ── Sequencing rationale ── -->
+  <h2>Sequencing Rationale</h2>
+
+  <p>
+    The falsification steps are ordered by information dependency: F-1 produces the
+    annual-by-annual \((r_y, \delta_y)\) series that F-2 conditions on climate indices
+    and that F-3 tests for directional asymmetry. F-1 also directly gates the
+    upgrade of <a href="dossier.html#CL-3">CL-3</a> from PROVISIONAL-PASS to PASS.
+  </p>
+
+  <!-- ── F-1 ── -->
+  <div class="falsif-step" id="F-1">
+    <span class="falsif-id">F-1 · Regime occupancy test</span>
+    <span class="priority-tag">Highest priority</span>
+
+    <h3>Objective</h3>
+    <p>
+      Compute annually fitted \((r_y, \delta_y)\) from long gauge series at Óbidos and
+      Manaus. Classify each year via
+      <a href="dossier.html">DC-A / DC-B</a> root-count discriminants.
+    </p>
+
+    <h3>Output</h3>
+    <p>
+      \(P(\text{two-maxima})\) — the fraction of years in the "bimodal" regime — and its
+      trend over the record length.
+    </p>
+
+    <h3>Data requirements</h3>
+    <p>
+      Long daily or monthly discharge series at Óbidos (1928–present if available) and
+      Manaus (stage → discharge conversion required). Source: ANA (Brazilian National Water
+      Agency) / HYBAM / UNH/GRDC composite.
+    </p>
+
+    <h3>Method</h3>
+    <p>
+      For each year <em>y</em>: fit \(Q_y(t) = c_0 + B_{1,y}\cos(\omega t - \psi_{1,y}) +
+      B_{2,y}\cos(2\omega t - \psi_{2,y})\) via least-squares to monthly means (or low-passed
+      daily series). Extract \(r_y = B_{2,y}/B_{1,y}\) and
+      \(\delta_y = \psi_{2,y} - 2\psi_{1,y}\). Apply DC-B root-count test. Alternatively,
+      apply DC-A directly to the smoothed hydrograph without assuming harmonic form.
+    </p>
+
+    <h3>Dependencies resolved</h3>
+    <p>
+      <a href="parameters.html#underconstrained">UC-1</a> (annual \(r_y, \delta_y\) series) ·
+      <a href="dossier.html#CL-3">CL-3 upgrade gate</a>
+    </p>
+
+    <h3>Staleness policy</h3>
+    <p>
+      Re-evaluate after 6 months or upon availability of new gauge data, whichever comes first.
+    </p>
+  </div>
+
+  <!-- ── F-2 ── -->
+  <div class="falsif-step" id="F-2">
+    <span class="falsif-id">F-2 · ENSO-conditioned shift</span>
+
+    <h3>Objective</h3>
+    <p>
+      Condition \((r_y, \delta_y)\) and peak-shape metrics on ENSO/Atlantic indices
+      (per the HESS framework [2]) to test whether climate modes push the system across
+      the <a href="model.html">DC-B discriminant boundary</a>.
+    </p>
+
+    <h3>Output</h3>
+    <p>
+      Conditional distributions \(P(r_y, \delta_y \,|\, \text{ENSO type})\) and statistical
+      test of whether any ENSO category produces a significantly different regime occupancy.
+    </p>
+
+    <h3>Method</h3>
+    <p>
+      Use F-1 output. Partition years by ENSO classification (El Niño / La Niña / Neutral,
+      or finer typology per [2]: Eastern Pacific vs Central Pacific events). Compare
+      \(r_y\) distributions across categories using non-parametric tests (Kruskal-Wallis
+      or permutation test). Also condition on tropical Atlantic SST anomaly indices.
+    </p>
+
+    <h3>Dependencies</h3>
+    <p>
+      Requires F-1 completion. Addresses
+      <a href="dossier.html#DS-3">DS-3</a> (ENSO modulation of secondary peaks).
+    </p>
+  </div>
+
+  <!-- ── F-3 ── -->
+  <div class="falsif-step" id="F-3">
+    <span class="falsif-id">F-3 · Kernel drift / hysteresis check</span>
+
+    <h3>Objective</h3>
+    <p>
+      Test whether the effective routing delay differs between rising and falling limbs
+      of the hydrograph (hysteresis signature). Quantify asymmetry if nonlinear extension
+      is invoked.
+    </p>
+
+    <h3>Output</h3>
+    <p>
+      Effective delay \(\tau_\uparrow\) (rising limb) vs \(\tau_\downarrow\) (falling limb),
+      and any secular trend in \(\tau\) over the record length that could indicate
+      kernel drift from land-use change.
+    </p>
+
+    <h3>Method</h3>
+    <p>
+      Cross-correlate upstream forcing (e.g., sub-basin rainfall or upstream gauge) with
+      Óbidos discharge, computed separately for rising and falling limbs. Alternatively,
+      use a state-dependent transfer function model with discharge-dependent lag parameter.
+      Assess trend in lag residuals across decades.
+    </p>
+
+    <h3>Dependencies resolved</h3>
+    <p>
+      <a href="parameters.html#underconstrained">UC-3</a> (kernel drift proxies) ·
+      <a href="dossier.html#DS-4">DS-4</a> (routing kernel parameterisation).
+      Partially addresses <a href="parameters.html#underconstrained">UC-4</a> (rating curves)
+      if stage data are used.
+    </p>
+  </div>
+
+  <!-- ── Dependency graph (text) ── -->
+  <h2>Dependency Graph</h2>
+
+  <p>
+    The logical ordering is F-1 → F-2 (requires F-1 output) and F-1 → F-3 (can proceed
+    in parallel with F-2 but benefits from F-1 time series). The three steps collectively
+    address all four underconstrained variables:
+  </p>
+
+  <table class="param-table">
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>Resolves</th>
+        <th>Upgrades</th>
+        <th>Prerequisite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>F-1</code></td>
+        <td>UC-1</td>
+        <td>CL-3 → PASS</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>F-2</code></td>
+        <td>—</td>
+        <td>DS-3 (sharpened)</td>
+        <td>F-1</td>
+      </tr>
+      <tr>
+        <td><code>F-3</code></td>
+        <td>UC-3, partial UC-4</td>
+        <td>DS-4 (parameterised)</td>
+        <td>F-1 (beneficial)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    UC-2 (rainfall harmonic fits) is not directly addressed by F-1 through F-3 but can
+    be pursued independently. It is a desirable extension, not a blocker for the
+    current dossier scope.
+  </p>
+
+  <!-- ── Footer ── -->
+  <footer class="page-footer">
+    Dossier v0.3 · Council-3 ADM-EC · Guardian stance with Architect, Scout inputs.<br>
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a> ·
+    Breakwater Layer · <code>hold/</code> (four underconstrained variables)
+  </footer>
+
+</div>
+</body>
+</html>

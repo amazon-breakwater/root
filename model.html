@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model — Amazon Seasonal Discharge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['code','pre'] }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" async></script>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="breadcrumb">
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a>
+    <span class="sep">·</span>
+    <a href="index.html">Amazon Seasonal Discharge</a>
+    <span class="sep">·</span>
+    Model
+  </nav>
+
+  <h1>Mathematical Framework</h1>
+  <p class="subtitle">
+    Harmonic decomposition, discriminant conditions, and structural two-maxima thresholds
+  </p>
+
+  <nav class="tab-nav">
+    <a href="index.html">Overview</a>
+    <a href="dossier.html">Dossier</a>
+    <a href="model.html" class="active">Model</a>
+    <a href="parameters.html">Parameters</a>
+    <a href="falsification.html">Falsification</a>
+  </nav>
+
+  <!-- ── Single-harmonic impossibility ── -->
+  <h2>Single-Harmonic Impossibility (CL-1)</h2>
+
+  <p>
+    Consider a seasonal discharge driven by a single harmonic and filtered through a
+    linear time-invariant (LTI) kernel. The output has the form:
+  </p>
+
+  <div class="math-display">
+    \[
+      Q(t) = c_0 + B\cos(\omega t - \psi)
+    \]
+  </div>
+
+  <p>
+    where \(\omega = 2\pi / T\) is the annual angular frequency, \(B\) is the amplitude
+    (set by the kernel gain at \(\omega\)), and \(\psi\) is the phase lag.
+  </p>
+
+  <p>Taking the derivative:</p>
+
+  <div class="math-display">
+    \[
+      \frac{\mathrm{d}Q}{\mathrm{d}t} = -B\omega \sin(\omega t - \psi) = 0
+    \]
+  </div>
+
+  <p>
+    This yields exactly two roots per period: \(\omega t - \psi = 0\) (maximum) and
+    \(\omega t - \psi = \pi\) (minimum). No LTI filter can increase the number of
+    extrema beyond the number present in the forcing.
+  </p>
+
+  <div class="discrim-block">
+    <span class="discrim-id">Formal result</span>
+    <p>
+      A single-frequency harmonic through any LTI kernel produces exactly one maximum
+      and one minimum per period. Two maxima per year requires either higher harmonics
+      or nonlinearity.
+    </p>
+  </div>
+
+  <!-- ── Minimal two-maxima model ── -->
+  <h2>Minimal Two-Maxima Model (CL-2)</h2>
+
+  <p>
+    The simplest extension that can produce two maxima adds the first overtone
+    (semiannual harmonic) to the annual fundamental:
+  </p>
+
+  <div class="math-display">
+    \[
+      Q(t) = c_0 + B_1\cos(\omega t - \psi_1) + B_2\cos(2\omega t - \psi_2)
+    \]
+  </div>
+
+  <h3>Control parameters</h3>
+
+  <p>
+    Define the amplitude ratio and effective phase difference:
+  </p>
+
+  <div class="math-display">
+    \[
+      r = \frac{B_2}{B_1}, \qquad \delta = \psi_2 - 2\psi_1
+    \]
+  </div>
+
+  <p>
+    These two parameters fully control the shape of the seasonal waveform
+    (up to overall amplitude and mean).
+  </p>
+
+  <h3>Derivative and root structure</h3>
+
+  <p>Substituting \(x = \omega t - \psi_1\) and taking the derivative:</p>
+
+  <div class="math-display">
+    \[
+      \frac{\mathrm{d}Q}{\mathrm{d}t} \propto -\sin x - 2r\sin(2x + \delta) = 0
+    \]
+  </div>
+
+  <p>Using the double-angle identity \(\sin(2x + \delta) = \sin 2x\cos\delta + \cos 2x\sin\delta\):</p>
+
+  <div class="math-display">
+    \[
+      f(x) \;=\; \sin x + 2r\bigl[\sin 2x \cos\delta + \cos 2x \sin\delta\bigr] \;=\; 0
+    \]
+  </div>
+
+  <p>
+    This is a trigonometric equation in \(x\) parameterised by \((r, \delta)\). For a
+    given \(\delta\), there exists a critical amplitude ratio \(r_\mathrm{c}(\delta)\)
+    above which the equation has four roots per period (two maxima, two minima),
+    and below which it has two roots (one maximum, one minimum — unimodal regime).
+  </p>
+
+  <div class="discrim-block">
+    <span class="discrim-id">DC-B · Two-maxima boundary</span>
+    <p>
+      The system transitions from unimodal to bimodal when \(r\) crosses
+      \(r_\mathrm{c}(\delta)\). This boundary is \(\delta\)-dependent and must be
+      evaluated numerically. For \(\delta \approx 0.9\;\mathrm{rad}\) (the Óbidos value),
+      \(r_\mathrm{c}\) is significantly larger than the observed \(r \approx 0.13\),
+      placing Óbidos firmly in the unimodal regime.
+    </p>
+  </div>
+
+  <!-- ── DC-A formal statement ── -->
+  <h2>Discriminant DC-A (General Root-Count)</h2>
+
+  <p>
+    Independent of the specific harmonic model, any smooth seasonal hydrograph
+    \(Q(t)\) can be tested directly:
+  </p>
+
+  <div class="discrim-block">
+    <span class="discrim-id">DC-A · Root-count discriminant</span>
+    <p>
+      In \(t \in [0,T)\), count the roots of \(\mathrm{d}Q/\mathrm{d}t = 0\).
+      If \(\geq 4\) roots exist, with \(\geq 2\) satisfying
+      \(\mathrm{d}^2Q/\mathrm{d}t^2 &lt; 0\), the year is classified as "two-maxima."
+    </p>
+    <p>
+      This discriminant applies to any smooth representation of \(Q(t)\) — harmonic fit,
+      spline, low-pass filtered daily series — and is model-independent.
+    </p>
+  </div>
+
+  <!-- ── Nonlinear extensions ── -->
+  <h2>Nonlinear Extensions (Outlook)</h2>
+
+  <p>
+    The linear harmonic model establishes a necessary condition for two-maxima behaviour.
+    In the real Amazon system, additional mechanisms may push the hydrograph toward or
+    away from the bimodal boundary:
+  </p>
+
+  <p>
+    <strong>Floodplain activation threshold.</strong> When discharge exceeds a critical
+    value \(Q_\mathrm{fp}\), water spills onto the floodplain. The effective storage
+    and routing kernel change abruptly. This is a state-dependent nonlinearity:
+    the kernel \(G(\tau)\) becomes \(G(\tau, Q)\).
+  </p>
+
+  <p>
+    <strong>Backwater effects.</strong> Tributary-mainstem interactions at confluences
+    produce stage-dependent damming. Rising and falling limbs of the hydrograph
+    experience different effective routing delays, introducing hysteresis.
+  </p>
+
+  <p>
+    <strong>Land-use driven kernel drift.</strong> Deforestation, urbanisation, and
+    wetland modification alter catchment response time. Over decadal timescales,
+    the routing kernel \(G_i(\tau)\) drifts, potentially moving sub-basins across
+    the \(r_\mathrm{c}\) boundary.
+  </p>
+
+  <p>
+    Quantifying these effects requires the underconstrained variables listed in
+    <a href="parameters.html#underconstrained">Parameters: UC-1 through UC-4</a>.
+    The falsification programme addresses them through
+    <a href="falsification.html#F-3">F-3 (kernel drift / hysteresis check)</a>.
+  </p>
+
+  <!-- ── Lock-Key assignment ── -->
+  <h2>Lock-Key Assignment</h2>
+
+  <p>
+    Following the Harbour vocabulary:
+  </p>
+
+  <p>
+    <strong>Locks</strong> (structural, stable): Discriminants DC-A and DC-B;
+    the single-harmonic impossibility theorem (CL-1); the definition of
+    "two-maxima year" in §1.2.
+  </p>
+
+  <p>
+    <strong>Keys</strong> (interpretive, updatable): Specific fitted values
+    \((r_y, \delta_y)\) at any gauge; climate-mode conditioning indices;
+    routing kernel parameterisations. These are updated when new data arrive
+    without altering the structural framework.
+  </p>
+
+  <!-- ── Footer ── -->
+  <footer class="page-footer">
+    Dossier v0.3 · Council-3 ADM-EC · Guardian stance with Architect, Scout inputs.<br>
+    <a href="https://harbour-architecture.github.io/root/">Open Science Harbour</a> ·
+    Breakwater Layer
+  </footer>
+
+</div>
+</body>
+</html>
